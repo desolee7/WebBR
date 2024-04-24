@@ -30,11 +30,17 @@ from pathlib import Path
 page_bg_img = """
 <style>
 
-[data-testid="stAppViewContainer"] {          
+[data-testid="stAppViewContainer"] {      
+
+
 background-color: #e9e9f8;
 opacity: 1;
-background-image:  linear-gradient(#444772 1px, transparent 1px), linear-gradient(to right, #444772 1px, #e9e9f8 1px);
-background-size: 20px 20px;
+background-image:  linear-gradient(#868be4 2px, transparent 2px), linear-gradient(90deg, #868be4 2px, transparent 2px), linear-gradient(#868be4 1px, transparent 1px), linear-gradient(90deg, #868be4 1px, #e9e9f8 1px);
+background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+
+
+
 p { color: black;}
 }
 [data-testid="stHeader"]{                    
