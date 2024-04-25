@@ -2,6 +2,7 @@ import requests
 import streamlit as st
 from PIL import Image
 from pathlib import Path
+import logging
 
 
 # def get_project_root() -> str:
@@ -224,6 +225,7 @@ if nap == "Программирование":
                                                     "Языки и технологии" : lung
                                                 }
                                                 response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
+                                                logging.debug(response.text)
 
 
 
