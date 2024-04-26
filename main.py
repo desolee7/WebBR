@@ -38,7 +38,7 @@ page_bg_img = """
 <style>
 
 [data-testid="stAppViewContainer"] {  
-    background-image: url("https://img.freepik.com/free-photo/glowing-spider-web-dark-abstract-backdrop-generated-by-ai_188544-36464.jpg?t=st=1714086465~exp=1714090065~hmac=eb294949183cf9872d61d6f464e6fd8cea816540d71eeaa88d2852888f97cb96&w=1380");   
+    background-image: url("https://understandbrain.com/wp-content/uploads/2023/09/glowing-spider-web-dark-abstract-backdrop-generated-by-ai.jpg");   
     
     background-size: cover;
 
