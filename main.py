@@ -56,8 +56,8 @@ background-color: black, transparent 50;}
     font_weight: bold;
     
 }
-[data-testid="stSideBar"]{                    
-    background-color: #819e66;
+[data-testid="stSidebar"]{                    
+    background-color: black;
 }
 div[data-baseweb = "select"] > div{
 background-color: black;
@@ -65,6 +65,9 @@ border-color: #CDFF6A;
 color: white;}
 [data-testid = "stForm"]{
 background: black;}
+div[data-baseweb = "radio"]: checked{
+background-color: black;}
+}
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
@@ -72,7 +75,6 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 gradient_text_html = """
 <style>
 .gradient-text {
-    font-weight: bold;
     background-color: #CDFF6A;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -86,6 +88,9 @@ gradient_text_html = """
 """
 
 st.markdown(gradient_text_html, unsafe_allow_html=True)
+options = ['Пройти опрос', 'Посмотреть результат']
+
+file = st.sidebar.radio('Выберите:', options)
 with st.form("My form"):
     nap = st.selectbox(
         'Выбери направление',
