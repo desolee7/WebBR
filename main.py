@@ -4,6 +4,7 @@ from PIL import Image
 from pathlib import Path
 import logging
 import base64
+import json
 
 
 
@@ -224,7 +225,11 @@ def extract_data(uploaded_file):
         "file_content": encoded_file_content
     }
 
-
+url= ""
+desc= ""
+long= ""
+cost= ""
+forma= ""
 
 
 with st.container():
@@ -246,7 +251,7 @@ with st.container():
             if st.button("Найти по PDF"):
                 data_to_send = df
                 response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-                print(response.text)
+                # print(response.text)
 
     elif select == 'Вставить ссылку на вакансию':
         url_vac = st.text_input('Вставьте ссылку на вакансию', key="text_input", help='Вставьте сюда ссылку')
@@ -257,6 +262,10 @@ with st.container():
             response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
             print(response.text)
 
+            data = response.json()
+            url = data["parsedBody"]["url_vac"]
+            url = str(url)
+
     elif select == 'Ввести текстовое описание вакансии':
         text_desc_vac = st.text_area('Введите текстовое описание вакансии', key="text_input", help='Введите сюда описание',height=150)
         if st.button("Найти по описанию"):
@@ -264,18 +273,31 @@ with st.container():
                 "text_vac": text_desc_vac
             }
             response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-            print(response.text)
+            # print(response.text)
+
+            data = response.json()
+            url = data["/*имясписка*/"]["url_vac"]   #ссылка на курс
+            url = str(url)
+
+            long = data["parsedBody"]["time"]  #длительность обучения
+            long = str(long)
+
+            cost = data["parsedBody"]["cost"]   #стоимость
+            cost = str(cost)
+
+            forma = data["parsedBody"]["forma"] #формат обучения
+            forma = str(forma)
+
+            desc = data["parsedBody"]["desc"]   #описание
+            desc = str(desc)
 
 
 
-# st.write("https://gb.ru/s/ai-integration-specialist")
-URL= "https://gb.ru/geek_university/developer/programmer"
-desc="Станьте востребованным инженером-программистом и получите одну из самых востребованных профессий в IT. Вы изучите основы программирования и основные концепции компьютерных наук, цифровые технологии, программное обеспечение, операционные системы, базы данных, системы аналитики, языки программирования и многое другое. Вы так же познакомитесь с тестированием и системным анализом информационных технологий. На программе сможете сделать осознанный выбор специализации и технологий, прокачаться в выбранном направлении."
-long="12 месяцев"
-cost="4 049"
-forma="очно"
 
-st.write("Ссылка на курс: " + URL)
+
+
+
+st.write("Ссылка на курс: " + url)
 
 st.write("Длительность курса " + long)
 
@@ -301,9 +323,9 @@ st.write(desc)
 otziv = """
 <style>
 .otziv{
-color:black;
-font-weight: bold;
-font-size: 20px;
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
 }
 </style>
 <div class = "otziv">Оцените нашу работу</div>
@@ -317,6 +339,17 @@ if st.button("Отправить отзыв"):
     }
     response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
     print(response.text)
+    thx = """
+        <style>
+        .thx{
+        color:black;
+        font-weight: bold;
+        font-size: 20px;
+        }
+        </style>
+        <div class = "thx">Спасибо за отзыв!</div>
+        """
+    st.markdown(thx, unsafe_allow_html=True)
 
 
      
