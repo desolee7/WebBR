@@ -317,7 +317,6 @@ if select == 'Загрузить PDF':
         if st.button("Найти по PDF"):
             data_to_send = df
             response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-            # print(response.text)
 
             data = response.json()
             output(data)
@@ -343,7 +342,6 @@ if select == 'Ввести текстовое описание вакансии'
             "text_vac": text_desc_vac
         }
         response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-        # print(response.text)
 
         data = response.json()
         output(data)
@@ -418,16 +416,3 @@ if select == 'Ввести текстовое описание вакансии'
 #                     <div class = "thx">Спасибо за отзыв!</div>
 #                     """
 #                 st.markdown(thx, unsafe_allow_html=True)
-
-
-     
-
-
-
-# for uploaded_file in uploaded_files:     ОБРАБОТКА И ВЫВОД ПДФ
-#     bytes_data = uploaded_file.read()
-
-#     st.write("filename:", uploaded_file.name)
-#     base64_pdf = base64.b64encode(bytes_data).decode('utf-8')
-#     pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-#     st.markdown(pdf_display, unsafe_allow_html=True)
