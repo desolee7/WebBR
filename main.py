@@ -42,6 +42,7 @@ page_bg_img = """
 
 [data-testid="stAppViewContainer"] {  
     background-image: url("https://thecharnelhouse.org/wp-content/uploads/2014/06/al-3-1926-lc3a1szlc3b3-moholy-nagy-oil-industrial-paints-and-pencil-on-aluminum-40-x-40-cm.jpg");   
+    # background-image: url("https://understandbrain.com/wp-content/uploads/2023/09/glowing-spider-web-dark-abstract-backdrop-generated-by-ai.jpg");   
 
     
     background-size: cover;
@@ -67,7 +68,9 @@ font-size: 20px;
 }
 div[data-baseweb = "select"] > div{
     background-color: black;
-    # border-color: #CDFF6A; 
+    # border-color: #CDFF6A;
+    border-color: #3A0603;
+    border-radius: 10px;
     color: #E8E6BB;
 }
 [data-testid = "stForm"]{
@@ -76,6 +79,59 @@ background: black;}
 [data-testid = "file_uploader"]{
 background-color: black;
 }
+
+[data-baseweb="icon"]{
+color: #E8E6BB;
+}
+
+[class="st-emotion-cache-sy3zga e1gc5fo21"]{
+color: #E8E6BB;
+}
+
+[class="st-emotion-cache-9ycgxx e1b2p2ww12"]{
+color: #E8E6BB;
+}
+
+[class="st-emotion-cache-7oyrr6 e1bju1570"]{
+color: #E8E6BB;
+}
+
+[class="st-emotion-cache-19rxjzo ef3psqc12"]{
+background-color: #3A0603;
+color: #E8E6BB;
+}
+
+[role="button"]{
+background-color: black;
+}
+
+[class="st-emotion-cache-wn8ljn e1b2p2ww13"]{
+color: #E8E6BB;
+}
+
+[data-baseweb="input"]{
+border-color: #3A0603;
+}
+
+[class="st-emotion-cache-1mdkfbq e1b2p2ww3"]{
+color: #3A0603;
+}
+
+[class="st-emotion-cache-1lp7pgu ef3psqc9"]{
+color: #3A0603;
+}
+
+
+
+
+[class="stFileUploaderFileData st-emotion-cache-1l4firl e1b2p2ww7"]{
+color: #3A0603;
+font-size: 20px;
+}
+
+# [class="st-emotion-cache-7oyrr6 e1bju1570"]{
+# color: #3A0603;
+# }
 
 div[data-baseweb = "radio"]: checked{
 background-color: black;}
@@ -158,7 +214,6 @@ with st.container():
             if st.button("Найти по PDF"):
                 data_to_send = extract_data(uploaded_file)
                 response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-                st.write(data_to_send)
                 print(response.text)
 
     elif select == 'Вставить ссылку на вакансию':
