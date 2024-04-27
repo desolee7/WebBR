@@ -54,7 +54,7 @@ page_bg_img = """
 p { color: black;
 background-color: black, transparent 50;
 font-size: 20px;
-}
+# }
 }
 [data-testid="stHeader"]{                    
     background-color: rgba(0, 0, 0, 0);
@@ -103,6 +103,7 @@ color: black;
 [class="st-emotion-cache-19rxjzo ef3psqc12"]{
 background-color: #DEFFA8;
 color: black;
+border-color: green;
 #browse file in drag and drop
 }
 
@@ -110,12 +111,13 @@ color: black;
 background-color: #DEFFA8;
 border-color: black;
 border-radius: 10px;
+font-size: 20px;
+# драг н дроп
 }
 
 [class="st-emotion-cache-wn8ljn e1b2p2ww13"]{
-#color: #E8E6BB;
 color: black;
-# Подписи в дропдауне
+# цвет иконки загрузки
 }
 
 [data-baseweb="input"]{
@@ -123,11 +125,11 @@ border-color: #DEFFA8;
 }
 
 [class="st-emotion-cache-1mdkfbq e1b2p2ww3"]{
-color: black; #вет загруженного пдф
+color: black; #цвет иконки пдф
 }
 
 [class="st-emotion-cache-1lp7pgu ef3psqc9"]{
-color: black; #вет загруженного пдф
+color: black; #цвет крестика
 }
 
 
@@ -156,6 +158,8 @@ font-size: 20px;
     color: black;
 }
 
+
+
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
@@ -175,6 +179,7 @@ gradient_text_html = """
     font-weight: bold;
     padding: 10px;
 }
+
 </style>
 <div class="gradient-text"><Найди профессию мечты/></div>
 """
@@ -242,7 +247,39 @@ with st.container():
             print(response.text)
 
 
-          
+
+# st.write("https://gb.ru/s/ai-integration-specialist")
+URL= "https://gb.ru/geek_university/developer/programmer"
+desc="Станьте востребованным инженером-программистом и получите одну из самых востребованных профессий в IT. Вы изучите основы программирования и основные концепции компьютерных наук, цифровые технологии, программное обеспечение, операционные системы, базы данных, системы аналитики, языки программирования и многое другое. Вы так же познакомитесь с тестированием и системным анализом информационных технологий. На программе сможете сделать осознанный выбор специализации и технологий, прокачаться в выбранном направлении."
+long="12 месяцев"
+cost="4 049"
+forma="очно"
+
+st.write("Ссылка на курс: " + URL)
+
+st.write("Длительность курса " + long)
+
+st.write("Стоимость обучения от " + cost +" ₽")
+
+st.write("Формат обучения: " + forma)
+
+
+bold_text = """
+<style>
+.bold-text{
+color:black;
+font-weight: bold;
+font-size: 20px;
+}
+</style>
+<div class = "bold-text">Описание курса</div>
+"""
+
+st.markdown(bold_text, unsafe_allow_html=True)
+st.write(desc)
+
+
+
      
 
 
