@@ -66,9 +66,11 @@ font-size: 20px;
 [data-testid="stSidebar"]{                    
     background-color: black;
 }
+
 [data-testid="stButton"]{                    
     border-color: rgba(0, 0, 0, 0);
 }
+
 div[data-baseweb = "select"] > div{
     # background-color: black;
     # border-color: #CDFF6A;
@@ -79,7 +81,8 @@ div[data-baseweb = "select"] > div{
     color: black;
 }
 [data-testid = "stForm"]{
-background: black;}
+background: black;
+}
 
 
 [data-baseweb="icon"]{
@@ -89,6 +92,7 @@ color: black;
 
 [class="st-emotion-cache-sy3zga e1gc5fo21"]{
 color: #E8E6BB;
+# background-color: red; 
 }
 
 [class="st-emotion-cache-9ycgxx e1b2p2ww12"]{
@@ -306,7 +310,7 @@ font-size: 20px;
 """
 st.markdown(otziv, unsafe_allow_html=True)
 
-otziv_polz = st.text_area('Напишите отзыв', key="text_input", help='Напишите отзыв',height=100)
+otziv_polz = st.text_area('Напишите отзыв', help='Напишите отзыв',height=100)
 if st.button("Отправить отзыв"):
     data_to_send = {
         "otziv_polz": otziv_polz
