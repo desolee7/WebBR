@@ -106,11 +106,7 @@ color: black;
 [class="st-emotion-cache-19rxjzo ef3psqc12"]{
 background-color: #DEFFA8;
 color: black;
-<<<<<<< HEAD
-border-color: green;
-=======
 # border-color: #DEFFA8;
->>>>>>> 4e6b6613141f5237cbdd3d8f28ae7a60011b1c19
 #browse file in drag and drop
 }
 
@@ -298,6 +294,25 @@ font-size: 20px;
 st.markdown(bold_text, unsafe_allow_html=True)
 st.write(desc)
 
+otziv = """
+<style>
+.otziv{
+color:black;
+font-weight: bold;
+font-size: 20px;
+}
+</style>
+<div class = "otziv">Оцените нашу работу</div>
+"""
+st.markdown(otziv, unsafe_allow_html=True)
+
+otziv_polz = st.text_area('Напишите отзыв', key="text_input", help='Напишите отзыв',height=100)
+if st.button("Отправить отзыв"):
+    data_to_send = {
+        "otziv_polz": otziv_polz
+    }
+    response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
+    print(response.text)
 
 
      
