@@ -34,14 +34,14 @@ import base64
 #background-image: url("https://catherineasquithgallery.com/uploads/posts/2021-02/1614380674_69-p-fon-abstraktsiya-svetlii-geometriya-76.jpg");
 #background-image: url("https://img.freepik.com/free-photo/glowing-spider-web-dark-abstract-backdrop-generated-by-ai_188544-36464.jpg?t=st=1714086465~exp=1714090065~hmac=eb294949183cf9872d61d6f464e6fd8cea816540d71eeaa88d2852888f97cb96&w=1380");
 #background-image: url("https://understandbrain.com/wp-content/uploads/2023/09/glowing-spider-web-dark-abstract-backdrop-generated-by-ai.jpg");   
-
-
-
+#background-image: url("https://thecharnelhouse.org/wp-content/uploads/2014/06/al-3-1926-lc3a1szlc3b3-moholy-nagy-oil-industrial-paints-and-pencil-on-aluminum-40-x-40-cm.jpg");
+#color: #E8E6BB
+#color: #DEFFA8;
 page_bg_img = """
 <style>
 
 [data-testid="stAppViewContainer"] {  
-    background-image: url("https://thecharnelhouse.org/wp-content/uploads/2014/06/al-3-1926-lc3a1szlc3b3-moholy-nagy-oil-industrial-paints-and-pencil-on-aluminum-40-x-40-cm.jpg");   
+    background-image: url("https://sun9-23.userapi.com/impg/XiO97rsW6bxg28kT5PH2JzV0j9St0JeHe8mWxQ/BSwgAokPBQ0.jpg?size=2560x1440&quality=96&sign=d30f4a2726161edc785e389ec67e5c2e&type=album");   
     # background-image: url("https://understandbrain.com/wp-content/uploads/2023/09/glowing-spider-web-dark-abstract-backdrop-generated-by-ai.jpg");   
 
     
@@ -51,7 +51,7 @@ page_bg_img = """
     # opacity: 0.8;
     # background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffffff 350px ), repeating-linear-gradient( #444cf755, #444cf7 );
 
-p { color: #E8E6BB;
+p { color: black;
 background-color: black, transparent 50;
 font-size: 20px;
 }
@@ -67,21 +67,21 @@ font-size: 20px;
     background-color: black;
 }
 div[data-baseweb = "select"] > div{
-    background-color: black;
+    # background-color: black;
     # border-color: #CDFF6A;
-    border-color: #3A0603;
+    background-color: #DEFFA8;
+    border-color: rgba(0, 0, 0, 0);
     border-radius: 10px;
-    color: #E8E6BB;
+    #color: #E8E6BB;
+    color: black;
 }
 [data-testid = "stForm"]{
 background: black;}
 
-[data-testid = "file_uploader"]{
-background-color: black;
-}
 
 [data-baseweb="icon"]{
-color: #E8E6BB;
+#color: #DEFFA8;
+color: black;
 }
 
 [class="st-emotion-cache-sy3zga e1gc5fo21"]{
@@ -89,43 +89,52 @@ color: #E8E6BB;
 }
 
 [class="st-emotion-cache-9ycgxx e1b2p2ww12"]{
-color: #E8E6BB;
+#color: #E8E6BB;
+color: black;
+#подпись drag and drop
 }
 
 [class="st-emotion-cache-7oyrr6 e1bju1570"]{
-color: #E8E6BB;
+#color: #E8E6BB;
+color: black;
+#подпись лимит
 }
 
 [class="st-emotion-cache-19rxjzo ef3psqc12"]{
-background-color: #3A0603;
-color: #E8E6BB;
+background-color: #DEFFA8;
+color: black;
+#browse file in drag and drop
 }
 
 [role="button"]{
-background-color: black;
+background-color: #DEFFA8;
+border-color: black;
+border-radius: 10px;
 }
 
 [class="st-emotion-cache-wn8ljn e1b2p2ww13"]{
-color: #E8E6BB;
+#color: #E8E6BB;
+color: black;
+# Подписи в дропдауне
 }
 
 [data-baseweb="input"]{
-border-color: #3A0603;
+border-color: #DEFFA8;
 }
 
 [class="st-emotion-cache-1mdkfbq e1b2p2ww3"]{
-color: #3A0603;
+color: black; #вет загруженного пдф
 }
 
 [class="st-emotion-cache-1lp7pgu ef3psqc9"]{
-color: #3A0603;
+color: black; #вет загруженного пдф
 }
 
 
 
 
 [class="stFileUploaderFileData st-emotion-cache-1l4firl e1b2p2ww7"]{
-color: #3A0603;
+color: black; #вет загруженного пдф
 font-size: 20px;
 }
 
@@ -133,22 +142,19 @@ font-size: 20px;
 # color: #3A0603;
 # }
 
-div[data-baseweb = "radio"]: checked{
-background-color: black;}
+
+.st-cc > div > div > div > input {
+    border-color: rgba(0, 0, 0, 0);
+    #border-width: 2px;
+    #border-style: solid;
+    border-radius: 5px;
+    
 }
 
-        .st-cc > div > div > div > input {
-            border-color: yellow;
-            border-width: 2px;
-            border-style: solid;
-            border-radius: 5px;
-        }
-
-
-        .stTextInput > div > div > input {
-            background-color: black;
-            color: #E8E6BB
-        }
+.stTextInput > div > div > input {
+    background-color: #DEFFA8;
+    color: black;
+}
 
 </style>
 """
@@ -158,24 +164,25 @@ gradient_text_html = """
 <style>
 .gradient-text {
     # background-color: #CDFF6A;
-    background-color: #3A0603;
+    # background-color: #3A0603;
+    background-color: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline;
     font-size: 46px;
-    # font-family: 'Courier New', Courier, monospace;
-    font-family: Franklin Gothic;
+    font-family: 'Courier New', Courier, monospace;
+    # font-family: Franklin Gothic;
     font-weight: bold;
-    padding: 40px;
+    padding: 10px;
 }
 </style>
 <div class="gradient-text"><Найди профессию мечты/></div>
 """
 
 st.markdown(gradient_text_html, unsafe_allow_html=True)
-options = ['Пройти опрос', 'Посмотреть результат']
+#options = ['Пройти опрос', 'Посмотреть результат']
 
-file = st.sidebar.radio('Выберите:', options)
+#file = st.sidebar.radio('Выберите:', options)
 
 # if st.button("Browse", className="file-upload-btn"):
 #     uploaded_file = st.file_uploader("Choose a file")
@@ -212,7 +219,7 @@ with st.container():
         if uploaded_file is not None:
             df = extract_data(uploaded_file)
             if st.button("Найти по PDF"):
-                data_to_send = extract_data(uploaded_file)
+                data_to_send = df
                 response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
                 print(response.text)
 
