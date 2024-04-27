@@ -5,6 +5,10 @@ from pathlib import Path
 import logging
 import base64
 import json
+from streamlit_agraph import agraph, Node, Edge, Config
+from streamlit_agraph.config import Config, ConfigBuilder
+
+
 
 
 
@@ -216,6 +220,47 @@ st.markdown(gradient_text_html, unsafe_allow_html=True)
 #         # Process the uploaded file
 #         st.write("File uploaded successfully!")
 
+
+
+st.title("Траектория") #ГРАФ
+n = ["Python", "JS", "1C"]
+nodes=[]
+edges = []
+
+for i in range(len(n)):
+    nodes.append( Node(id=i, 
+        label=n[i],
+        size=25,
+        # shape="circularImage"
+        ) )
+for j in range (1, len(n)):
+    edges.append( Edge(source=nodes[0],  
+    target=nodes[i]
+)
+)
+print(nodes)
+
+config = Config(width=750,
+    height=950,
+    directed=True, 
+    physics=True, 
+    hierarchical=False,
+    )
+print(edges)
+
+return_value = agraph(nodes=nodes,
+    edges=edges, 
+    config=config)
+
+config_builder = ConfigBuilder(nodes)
+config = config_builder.build()
+
+config.save("config.json")
+
+config = Config(from_json="config.json")
+
+
+
 def extract_data(uploaded_file):
     file_content = uploaded_file.read()
     # st.write(file_content)
@@ -281,6 +326,13 @@ def output(data):
             </style>
             <div class = "otziv">Оцените нашу работу</div>
             """
+
+
+
+
+
+
+
             st.markdown(otziv, unsafe_allow_html=True)
             otziv_polz = st.text_input('Напишите отзыв', help='Напишите отзыв', key = 'text')
             print(otziv_polz)
