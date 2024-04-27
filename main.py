@@ -232,124 +232,198 @@ cost= ""
 forma= ""
 
 
-with st.container():
-    select = st.selectbox(
-         'Выберите формат добавления вакансии',
-         ('Загрузить PDF','Вставить ссылку на вакансию', 'Ввести текстовое описание вакансии'))
-    if select == 'Загрузить PDF':
-
-        # uploaded_files = st.file_uploader(    #рабочий код для драг н дропа
-        # "Загрузить PDF",
-        # accept_multiple_files=True,
-        # type=['pdf'],
-        # help='Перетащите PDF файл'
-        # )
-
-        uploaded_file = st.file_uploader('Перетащите PDF файл', type="pdf")
-        if uploaded_file is not None:
-            df = extract_data(uploaded_file)
-            if st.button("Найти по PDF"):
-                data_to_send = df
-                response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-                # print(response.text)
-
-    elif select == 'Вставить ссылку на вакансию':
-        url_vac = st.text_input('Вставьте ссылку на вакансию', key="text_input", help='Вставьте сюда ссылку')
-        if st.button("Найти по ссылке"):
-            data_to_send = {
-                "url_vac": url_vac
-            }
-            response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-            print(response.text)
-
-            data = response.json()
-            url = data["parsedBody"]["url_vac"]
+def output(data):
+            url = data["parsedBody"]["url_vac"]   #ссылка на курс
             url = str(url)
 
-    elif select == 'Ввести текстовое описание вакансии':
-        text_desc_vac = st.text_area('Введите текстовое описание вакансии', key="text_input", help='Введите сюда описание',height=150)
-        if st.button("Найти по описанию"):
-            data_to_send = {
-                "text_vac": text_desc_vac
+            # long = data["parsedBody"]["time"]  #длительность обучения
+            # long = str(long)
+
+            # cost = data["parsedBody"]["cost"]   #стоимость
+            # cost = str(cost)
+
+            # forma = data["parsedBody"]["forma"] #формат обучения
+            # forma = str(forma)
+
+            # desc = data["parsedBody"]["desc"]   #описание
+            # desc = str(desc)
+
+            st.write("Ссылка на курс: " + url)
+
+            st.write("Длительность курса " + long)
+
+            st.write("Стоимость обучения от " + cost +" ₽")
+
+            st.write("Формат обучения: " + forma)
+
+
+            bold_text = """
+            <style>
+            .bold-text{
+            color:black;
+            font-weight: bold;
+            font-size: 20px;
             }
+            </style>
+            <div class = "bold-text">Описание курса</div>
+            """
+
+            st.markdown(bold_text, unsafe_allow_html=True)
+            st.write(desc)
+
+            otziv = """
+            <style>
+            .otziv{
+                color:black;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            </style>
+            <div class = "otziv">Оцените нашу работу</div>
+            """
+            st.markdown(otziv, unsafe_allow_html=True)
+            otziv_polz = st.text_input('Напишите отзыв', help='Напишите отзыв', key = 'text')
+            print(otziv_polz)
+            ot = {
+                "otziv_polz": otziv_polz
+            }
+            ot_pol = requests.post('https://echo.free.beeceptor.com', json=ot)
+            print(ot_pol.text)
+            thx = """
+                <style>
+                .thx{
+                color:black;
+                font-weight: bold;
+                font-size: 20px;
+                }
+                </style>
+                <div class = "thx">Спасибо за отзыв!</div>
+                """
+            st.markdown(thx, unsafe_allow_html=True)
+
+                    
+            
+
+
+
+
+select = st.selectbox(
+        'Выберите формат добавления вакансии',
+        ('Загрузить PDF','Вставить ссылку на вакансию', 'Ввести текстовое описание вакансии'))
+if select == 'Загрузить PDF':
+
+    # uploaded_files = st.file_uploader(    #рабочий код для драг н дропа
+    # "Загрузить PDF",
+    # accept_multiple_files=True,
+    # type=['pdf'],
+    # help='Перетащите PDF файл'
+    # )
+
+    uploaded_file = st.file_uploader('Перетащите PDF файл', type="pdf")
+    if uploaded_file is not None:
+        df = extract_data(uploaded_file)
+        if st.button("Найти по PDF"):
+            data_to_send = df
             response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
             # print(response.text)
-
-            data = response.json()
-            url = data["/*имясписка*/"]["url_vac"]   #ссылка на курс
-            url = str(url)
-
-            long = data["parsedBody"]["time"]  #длительность обучения
-            long = str(long)
-
-            cost = data["parsedBody"]["cost"]   #стоимость
-            cost = str(cost)
-
-            forma = data["parsedBody"]["forma"] #формат обучения
-            forma = str(forma)
-
-            desc = data["parsedBody"]["desc"]   #описание
-            desc = str(desc)
+            
 
 
-
-
-
-
-
-st.write("Ссылка на курс: " + url)
-
-st.write("Длительность курса " + long)
-
-st.write("Стоимость обучения от " + cost +" ₽")
-
-st.write("Формат обучения: " + forma)
-
-
-bold_text = """
-<style>
-.bold-text{
-color:black;
-font-weight: bold;
-font-size: 20px;
-}
-</style>
-<div class = "bold-text">Описание курса</div>
-"""
-
-st.markdown(bold_text, unsafe_allow_html=True)
-st.write(desc)
-
-otziv = """
-<style>
-.otziv{
-    color:black;
-    font-weight: bold;
-    font-size: 20px;
-}
-</style>
-<div class = "otziv">Оцените нашу работу</div>
-"""
-st.markdown(otziv, unsafe_allow_html=True)
-
-otziv_polz = st.text_area('Напишите отзыв', help='Напишите отзыв',height=100)
-if st.button("Отправить отзыв"):
-    data_to_send = {
-        "otziv_polz": otziv_polz
-    }
-    response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
-    print(response.text)
-    thx = """
-        <style>
-        .thx{
-        color:black;
-        font-weight: bold;
-        font-size: 20px;
+if select == 'Вставить ссылку на вакансию':
+    url_vac = st.text_input('Вставьте ссылку на вакансию', key="text_input", help='Вставьте сюда ссылку')
+    if st.button("Найти по ссылке"):
+        data_to_send = {
+            "url_vac": url_vac
         }
-        </style>
-        <div class = "thx">Спасибо за отзыв!</div>
-        """
-    st.markdown(thx, unsafe_allow_html=True)
+        response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
+        print(response.text)
+
+        data = response.json()
+        output(data)
+
+if select == 'Ввести текстовое описание вакансии':
+    text_desc_vac = st.text_area('Введите текстовое описание вакансии', key="text_input", help='Введите сюда описание',height=150)
+    if st.button("Найти по описанию"):
+        data_to_send = {
+            "text_vac": text_desc_vac
+        }
+        response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
+        # print(response.text)
+
+        data = response.json()
+        # output(data)
+
+
+
+# def output(data):
+#             url = data["/*имясписка*/"]["url_vac"]   #ссылка на курс
+#             url = str(url)
+
+#             long = data["parsedBody"]["time"]  #длительность обучения
+#             long = str(long)
+
+#             cost = data["parsedBody"]["cost"]   #стоимость
+#             cost = str(cost)
+
+#             forma = data["parsedBody"]["forma"] #формат обучения
+#             forma = str(forma)
+
+#             desc = data["parsedBody"]["desc"]   #описание
+#             desc = str(desc)
+
+#             st.write("Ссылка на курс: " + url)
+
+#             st.write("Длительность курса " + long)
+
+#             st.write("Стоимость обучения от " + cost +" ₽")
+
+#             st.write("Формат обучения: " + forma)
+
+
+#             bold_text = """
+#             <style>
+#             .bold-text{
+#             color:black;
+#             font-weight: bold;
+#             font-size: 20px;
+#             }
+#             </style>
+#             <div class = "bold-text">Описание курса</div>
+#             """
+
+#             st.markdown(bold_text, unsafe_allow_html=True)
+#             st.write(desc)
+
+#             otziv = """
+#             <style>
+#             .otziv{
+#                 color:black;
+#                 font-weight: bold;
+#                 font-size: 20px;
+#             }
+#             </style>
+#             <div class = "otziv">Оцените нашу работу</div>
+#             """
+#             st.markdown(otziv, unsafe_allow_html=True)
+
+#             otziv_polz = st.text_area('Напишите отзыв', help='Напишите отзыв',height=100)
+#             if st.button("Отправить отзыв"):
+#                 data_to_send = {
+#                     "otziv_polz": otziv_polz
+#                 }
+#                 response = requests.post('https://echo.free.beeceptor.com', json=data_to_send)
+#                 print(response.text)
+#                 thx = """
+#                     <style>
+#                     .thx{
+#                     color:black;
+#                     font-weight: bold;
+#                     font-size: 20px;
+#                     }
+#                     </style>
+#                     <div class = "thx">Спасибо за отзыв!</div>
+#                     """
+#                 st.markdown(thx, unsafe_allow_html=True)
 
 
      
