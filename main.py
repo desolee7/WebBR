@@ -66,6 +66,9 @@ font-size: 20px;
 [data-testid="stSidebar"]{                    
     background-color: black;
 }
+[data-testid="stButton"]{                    
+    border-color: rgba(0, 0, 0, 0);
+}
 div[data-baseweb = "select"] > div{
     # background-color: black;
     # border-color: #CDFF6A;
@@ -103,15 +106,19 @@ color: black;
 [class="st-emotion-cache-19rxjzo ef3psqc12"]{
 background-color: #DEFFA8;
 color: black;
+border-color: #DEFFA8;
 #browse file in drag and drop
 }
 
 [role="button"]{
 background-color: #DEFFA8;
-border-color: black;
+border-color: rgba(0,0,0,0);
 border-radius: 10px;
 }
-
+[role="textbox"]{
+background-color: #DEFFA8;
+border-radius: 10px;
+}
 [class="st-emotion-cache-wn8ljn e1b2p2ww13"]{
 #color: #E8E6BB;
 color: black;
@@ -121,7 +128,18 @@ color: black;
 [data-baseweb="input"]{
 border-color: #DEFFA8;
 }
-
+[data-baseweb="base-input"]{
+background-color: #DEFFA8;
+color: black;
+border-color: #DEFFA8;
+-webkit-text-fill-color: black;
+caret-color: red;
+}
+[data-baseweb="textarea"]{
+border-color: #DEFFA8;
+color: black;
+caret-color: red;
+}
 [class="st-emotion-cache-1mdkfbq e1b2p2ww3"]{
 color: black; #вет загруженного пдф
 }
@@ -129,7 +147,6 @@ color: black; #вет загруженного пдф
 [class="st-emotion-cache-1lp7pgu ef3psqc9"]{
 color: black; #вет загруженного пдф
 }
-
 
 
 
@@ -233,7 +250,7 @@ with st.container():
             print(response.text)
 
     elif select == 'Ввести текстовое описание вакансии':
-        text_desc_vac = st.text_input('Ввести текстовое описание вакансии', key="text_input", help='Введите сюда описание')
+        text_desc_vac = st.text_area('Введите текстовое описание вакансии', key="text_input", help='Введите сюда описание',height=150)
         if st.button("Найти по описанию"):
             data_to_send = {
                 "text_vac": text_desc_vac
